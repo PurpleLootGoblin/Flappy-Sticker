@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cnwjgtsn35brg"]
+
+[ext_resource type="Shader" path="res://scenes/main/main.gdshader" id="1_3tv45"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8nllv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pwti0"]
+width = 1920
+height = 1080
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_8nllv")
+
+[resource]
+shader = ExtResource("1_3tv45")
+shader_parameter/octaves = 4
+shader_parameter/starting_amplitude = 0.5
+shader_parameter/starting_frequency = 1.0
+shader_parameter/shift = -0.2
+shader_parameter/velocity = Vector2(0.005, 0.004)
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_pwti0")

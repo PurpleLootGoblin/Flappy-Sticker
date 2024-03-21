@@ -1,0 +1,218 @@
+[gd_scene load_steps=11 format=3 uid="uid://dr7vaehxw2vk3"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_bsci1"]
+[ext_resource type="PackedScene" uid="uid://cjm4vr3hlrqqg" path="res://scenes/player/player.tscn" id="1_dqlkk"]
+[ext_resource type="PackedScene" uid="uid://cl08xqqmyxoio" path="res://menus/death_menu.tscn" id="3_t46li"]
+[ext_resource type="Texture2D" uid="uid://bcscjr81xt0ta" path="res://assets/background/blue_sky.svg" id="4_rkweb"]
+[ext_resource type="AudioStream" uid="uid://8p25b44v54pm" path="res://notmine/music/Patreon Challenge - 08.ogg" id="5_j5ksh"]
+[ext_resource type="AudioStream" uid="uid://datvtxoc54qsa" path="res://notmine/music/VGMA Challenge - 29.ogg" id="7_g841m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rtfy"]
+size = Vector2(1926.5, 20)
+
+[sub_resource type="Animation" id="Animation_v1vea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:obstacle_speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1000.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObstacleSpawnTimer:wait_time")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:simple_obstacle_up")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:simple_obstacle_down")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1000.0]
+}
+
+[sub_resource type="Animation" id="Animation_rgvsd"]
+resource_name = "diff_increase"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:obstacle_speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [600.0, 1500.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObstacleSpawnTimer:wait_time")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 59.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.75, 0.3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:simple_obstacle_up")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [100.0, 175.0, 185.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:simple_obstacle_down")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 10, 29.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1000.0, 950.0, 940.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jyi7e"]
+_data = {
+"RESET": SubResource("Animation_v1vea"),
+"diff_increase": SubResource("Animation_rgvsd")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_bsci1")
+obstacle_speed = 1000.0
+simple_obstacle_up = 100.0
+simple_obstacle_down = 1000.0
+
+[node name="Player" parent="." instance=ExtResource("1_dqlkk")]
+position = Vector2(250, 450)
+jump_height = 200.0
+jump_time_to_peak = 0.44
+jump_time_to_descent = 0.33
+
+[node name="FallArea" type="Area2D" parent="."]
+position = Vector2(0, 370)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallArea"]
+position = Vector2(957.75, 709)
+shape = SubResource("RectangleShape2D_5rtfy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FallArea"]
+position = Vector2(964, -393)
+shape = SubResource("RectangleShape2D_5rtfy")
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="ObstacleSpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="DiffIncreaser" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jyi7e")
+}
+autoplay = "diff_increase"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -193.5
+offset_right = 193.5
+offset_bottom = 114.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "Score:"
+
+[node name="Number" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="DeathMenu" parent="." instance=ExtResource("3_t46li")]
+visible = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_limit_end = Vector2(1920, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.917647, 0.917647, 0.917647, 1)
+motion_mirroring = Vector2(1900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+texture = ExtResource("4_rkweb")
+centered = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_j5ksh")
+volume_db = -8.0
+
+[node name="DeathMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_g841m")
+volume_db = -10.0
+
+[connection signal="body_entered" from="FallArea" to="." method="_on_fall_area_body_entered"]
+[connection signal="timeout" from="ObstacleSpawnTimer" to="." method="_on_obstacle_spawn_timer_timeout"]

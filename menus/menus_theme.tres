@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://57frlcpspj8u"]
+
+[ext_resource type="FontFile" uid="uid://bb33pochx7cke" path="res://notmine/font/Kaph-Regular.ttf" id="1_nt0ur"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82rex"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4opqy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v46iw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgega"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfui4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oyg2k"]
+
+[resource]
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 24
+Button/font_sizes/font_size = 48
+Button/styles/disabled = SubResource("StyleBoxEmpty_82rex")
+Button/styles/focus = SubResource("StyleBoxEmpty_4opqy")
+Button/styles/hover = SubResource("StyleBoxEmpty_v46iw")
+Button/styles/normal = SubResource("StyleBoxEmpty_bgega")
+Button/styles/pressed = SubResource("StyleBoxEmpty_hfui4")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/line_spacing = 0
+Label/constants/outline_size = 20
+Label/constants/shadow_offset_x = 8
+Label/constants/shadow_offset_y = 9
+Label/constants/shadow_outline_size = 0
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_nt0ur")
+Label/styles/normal = SubResource("StyleBoxEmpty_oyg2k")

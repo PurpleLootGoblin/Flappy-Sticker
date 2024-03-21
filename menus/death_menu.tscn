@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl08xqqmyxoio"]
+
+[ext_resource type="Script" path="res://menus/death_menu.gd" id="1_ncffa"]
+
+[node name="DeathMenu" type="CanvasLayer"]
+script = ExtResource("1_ncffa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 150
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Highscore" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.898039, 0.686275, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Highscore"
+
+[node name="HighscoreNumber" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="RetryButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.768627, 0.396078, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.772549, 0.0745098, 1)
+theme_override_colors/font_hover_color = Color(0, 0.917647, 0.0235294, 1)
+text = "Retry"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.584314, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.788235, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.152941, 0.109804, 1)
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

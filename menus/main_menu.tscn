@@ -1,0 +1,237 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5jh5edafck54"]
+
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_tfvd7"]
+[ext_resource type="Texture2D" uid="uid://bcscjr81xt0ta" path="res://assets/background/blue_sky.svg" id="2_mvdgw"]
+[ext_resource type="AudioStream" uid="uid://metd5wn0kr4d" path="res://notmine/music/VGMA Challenge - 04.ogg" id="4_n6jqq"]
+[ext_resource type="AudioStream" uid="uid://digjn5ph66av1" path="res://notmine/sounds/Jump_and_ui/Retro Instrument - crystal - C00.wav" id="5_3erd0"]
+[ext_resource type="Texture2D" uid="uid://dp483jum0bine" path="res://assets/player/Player.svg" id="5_rbrdq"]
+[ext_resource type="AudioStream" uid="uid://bkcpd505h0y1" path="res://notmine/sounds/Jump_and_ui/Retro Event UI 01.wav" id="6_5udaa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_owwyv"]
+friction = 0.0
+bounce = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ejp8f"]
+radius = 60.407
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sfmmu"]
+friction = 0.0
+bounce = 25.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1khb"]
+size = Vector2(1938, 29)
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_tfvd7")
+
+[node name="Bouncy" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.537255)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Bouncy"]
+position = Vector2(330, 159)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_owwyv")
+gravity_scale = 0.8
+angular_velocity = 0.264592
+constant_force = Vector2(21.36, 16.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy/RigidBody2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_rbrdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy/RigidBody2D"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_ejp8f")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="Bouncy"]
+position = Vector2(662, 284)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_owwyv")
+gravity_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy/RigidBody2D3"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_rbrdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy/RigidBody2D3"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_ejp8f")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="Bouncy"]
+position = Vector2(298, 495)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_owwyv")
+gravity_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy/RigidBody2D4"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_rbrdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy/RigidBody2D4"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_ejp8f")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="Bouncy"]
+position = Vector2(1078, 384)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_owwyv")
+gravity_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy/RigidBody2D5"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_rbrdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy/RigidBody2D5"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_ejp8f")
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="Bouncy"]
+position = Vector2(1258, 710)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_owwyv")
+gravity_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy/RigidBody2D6"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_rbrdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy/RigidBody2D6"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_ejp8f")
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="Bouncy"]
+position = Vector2(1466, 417)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_owwyv")
+gravity_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy/RigidBody2D7"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_rbrdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy/RigidBody2D7"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_ejp8f")
+
+[node name="RigidBody2D8" type="RigidBody2D" parent="Bouncy"]
+position = Vector2(1667, 804)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_owwyv")
+gravity_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy/RigidBody2D8"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_rbrdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy/RigidBody2D8"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_ejp8f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 200
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer2/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.627451, 1, 0.941176, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 20
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 120
+text = "FLAPPY STICKER"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0.709804, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.643137, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 84
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.6, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.854902, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "QUIT"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_limit_end = Vector2(1920, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1900, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+texture = ExtResource("2_mvdgw")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(944, 1084)
+physics_material_override = SubResource("PhysicsMaterial_sfmmu")
+constant_linear_velocity = Vector2(-250, -250)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(11, 1)
+shape = SubResource("RectangleShape2D_w1khb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-944, -451)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_w1khb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(980, -451)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_w1khb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(23, -1086)
+shape = SubResource("RectangleShape2D_w1khb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n6jqq")
+volume_db = -8.0
+
+[node name="UISounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_3erd0")
+volume_db = -4.0
+
+[node name="UISounds2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5udaa")
+volume_db = -4.0
+
+[connection signal="mouse_entered" from="MarginContainer/CenterContainer/VBoxContainer2/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer2/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/CenterContainer/VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

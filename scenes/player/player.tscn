@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjm4vr3hlrqqg"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_aa7y3"]
+[ext_resource type="Texture2D" uid="uid://dp483jum0bine" path="res://assets/player/Player.svg" id="2_nh266"]
+[ext_resource type="AudioStream" uid="uid://cc021ig4cci0p" path="res://notmine/sounds/Jump_and_ui/Jump.wav" id="3_6svch"]
+[ext_resource type="Texture2D" uid="uid://dmfvpedjmxynq" path="res://assets/player/circle.png" id="4_w7lxo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aj7o0"]
+radius = 54.037
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_humg7"]
+radius = 53.0
+
+[sub_resource type="Animation" id="Animation_jw2jc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lkv1y"]
+resource_name = "jumpy"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5mmk"]
+_data = {
+"RESET": SubResource("Animation_jw2jc"),
+"jumpy": SubResource("Animation_lkv1y")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 6
+collision_mask = 4
+script = ExtResource("1_aa7y3")
+jump_height = 500.0
+jump_time_to_peak = 0.5
+jump_time_to_descent = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.996078, 0.996078, 0.996078, 1)
+position = Vector2(1, 0)
+texture = ExtResource("2_nh266")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_aj7o0")
+
+[node name="DeathArea" type="Area2D" parent="." groups=["DeathArea"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+shape = SubResource("CircleShape2D_humg7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6svch")
+volume_db = -2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o5mmk")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.7
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_w7lxo")
+texture_scale = 1.5
+
+[connection signal="body_entered" from="DeathArea" to="." method="_on_death_area_body_entered"]

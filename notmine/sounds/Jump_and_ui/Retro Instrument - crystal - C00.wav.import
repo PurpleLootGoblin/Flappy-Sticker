@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://digjn5ph66av1"
+path="res://.godot/imported/Retro Instrument - crystal - C00.wav-b80dcd511d39625e6eed0e0a7e2a7eac.sample"
+
+[deps]
+
+source_file="res://notmine/sounds/Jump_and_ui/Retro Instrument - crystal - C00.wav"
+dest_files=["res://.godot/imported/Retro Instrument - crystal - C00.wav-b80dcd511d39625e6eed0e0a7e2a7eac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
